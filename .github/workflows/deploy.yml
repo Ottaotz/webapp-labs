@@ -74,7 +74,7 @@ jobs:
           export DOCKER_BUILDKIT=0
           export COMPOSE_DOCKER_CLI_BUILD=0
         tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/hello-java:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/javacrescer:latest
           
   deploy:
     name: Publica App ACI
@@ -90,7 +90,13 @@ jobs:
       uses: 'azure/aci-deploy@v1'
       with:
         resource-group: RG-APPS-CRESCER
-
-        
-        
+        dns-name-label: labs-crescer-otto-sc
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/javacrescer:latest
+        cpu: 1   
+        memory: 1 
+        registry-login-server: docker.io
+        registry-username: ${{ secrets.REGISTRY_USERNAME }}
+        registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+        name: labs-crescer-otto-sc
+        location: 'east us'
         
