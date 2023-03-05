@@ -90,13 +90,13 @@ jobs:
       uses: 'azure/aci-deploy@v1'
       with:
         resource-group: RG-APPS-CRESCER
-        dns-name-label: labs-crescer-otto-sc
+        dns-name-label: labs-crescer-otto-schmitz
         image: ${{ secrets.DOCKERHUB_USERNAME }}/javacrescer:latest
         cpu: 1   
         memory: 1 
         registry-login-server: docker.io
         registry-username: ${{ secrets.REGISTRY_USERNAME }}
         registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-        name: labs-crescer-otto-sc
+        name: labs-crescer-otto-schmitz
         location: 'east us'
         
